@@ -4,7 +4,11 @@ import fetchPokemon from "../../redux/actions/buscadorAction";
 
 function BuscadorPokemon() {
   const dispatch = useDispatch();
-  const [pokemonName, setPokemonName] = useState("");
+  const [pokemonName, setPokemonName] = useState("mewtwo");
+
+  const changePokemon = (e) => {
+    setPokemonName(e.target.value);
+  };
   return (
     <div className="form-group">
       <label htmlFor="buscar_pokemon" className="text-white">
@@ -13,9 +17,10 @@ function BuscadorPokemon() {
       <input
         type="text"
         className="form-control"
+        value={pokemonName}
         id="buscar_pokemon"
         onChange={(e) => {
-          setPokemonName(e.target.name);
+          changePokemon(e);
         }}
       />
       <button
